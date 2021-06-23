@@ -1,4 +1,5 @@
 import os
+import csv
 
 path = "C:\\Repos\\real_estate_app\\data\\SacramentoRealEstateTranscations2008.csv"
 
@@ -19,6 +20,20 @@ def get_data_file():
     return os.path.join(base_folder, 'data', 'SacramentoRET2008.csv')
 
 def load_file(filename):
+    with open(filename,'r',encoding="utf-8") as file:
+
+        reader = csv.DictReader(file)
+        for row in reader:
+            print(row)
+            print(f"Price {row['price']}")
+        
+
+        # header = file.readline().strip()
+        # reader = csv.reader(file)
+        # for row in reader:
+        #     print(row)
+
+def load_file_basic(filename):
     with open (filename, 'r', encoding="utf-8") as file:
         header = file.readline().strip()
         print('found header: ' + header)
