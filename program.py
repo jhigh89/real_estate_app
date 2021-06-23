@@ -20,12 +20,12 @@ def get_data_file():
 
 def load_file(filename):
     with open (filename, 'r', encoding="utf-8") as file:
-        header = file.readline()
+        header = file.readline().strip()
         print('found header: ' + header)
 
         lines = []
         for line in file:
-            line_data = line.split(',')
+            line_data = line.strip().split(',')
             lines.append(line_data)
 
         print(lines[:3])
